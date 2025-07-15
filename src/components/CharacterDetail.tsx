@@ -11,16 +11,23 @@ export default function CharacterDetail() {
   });
 
   if (isLoading) return <p>Loading character...</p>;
-  if (!data) return <p>No character found.</p>;
 
   return (
-    <div>
+    <div className="container">
       <h2>{data.name}</h2>
       <img src={data.image} alt={data.name} />
-      <p>Status: {data.status}</p>
-      <p>Species: {data.species}</p>
-      <p>Gender: {data.gender}</p>
-      <p>Location: {data.location.name}</p>
+      <p>
+        <strong>Status:</strong> {data.status}
+      </p>
+      <p>
+        <strong>Species:</strong> {data.species}
+      </p>
+      <p>
+        <strong>Gender:</strong> {data.gender}
+      </p>
+      <p>
+        <strong>Location:</strong> {data.location.name}
+      </p>
     </div>
   );
 }

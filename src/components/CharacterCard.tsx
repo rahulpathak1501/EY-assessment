@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 interface CharacterCardProps {
@@ -13,11 +14,11 @@ export default function CharacterCard({ character }: CharacterCardProps) {
 
   return (
     <div
+      className="card"
       onClick={() => navigate(`/character/${character.id}`)}
-      style={{ cursor: "pointer", textAlign: "center" }}
     >
-      <img src={character.image} alt={character.name} width="100" />
-      <p>{character.name}</p>
+      <img src={character.image} alt={character.name} />
+      <h3>{character.name}</h3>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function CharacterList() {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["characters", page],
     queryFn: () => fetchCharacters(page),
-    placeholderData: (prev) => prev, // React Query v5
+    placeholderData: (prev) => prev,
   });
 
   const handleRefresh = () => refetch();
@@ -21,28 +21,26 @@ export default function CharacterList() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>Rick & Morty Characters</h1>
-      <button onClick={handleRefresh}>🔄 Refresh</button>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "1rem",
-        }}
-      >
+    <div className="container">
+      <h1>Rick & Morty Explorer</h1>
+      <div style={{ marginBottom: "1rem" }}>
+        <button onClick={handleRefresh}>Refresh</button>
+      </div>
+
+      <div className="character-grid">
         {data?.results?.map((char: any) => (
           <CharacterCard key={char.id} character={char} />
         ))}
       </div>
-      <div style={{ marginTop: "20px" }}>
+
+      <div style={{ marginTop: "2rem", textAlign: "center" }}>
         <button
           disabled={page === 1}
           onClick={() => handlePageChange(page - 1)}
         >
           ⬅ Prev
         </button>
-        <span style={{ margin: "0 10px" }}>Page {page}</span>
+        <span style={{ margin: "0 1rem" }}>Page {page}</span>
         <button
           disabled={!data?.info?.next}
           onClick={() => handlePageChange(page + 1)}

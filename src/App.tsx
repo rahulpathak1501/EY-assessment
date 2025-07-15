@@ -1,15 +1,13 @@
-// App.tsx
 import { Routes, Route } from "react-router-dom";
-import CharacterList from "./components/CharacterList";
-import CharacterDetail from "./components/CharacterDetail";
+import CharacterPage from "./pages/CharacterPage";
+import "./styles/global.css";
+import HomePage from "./pages/HomePage";
 
-function App() {
+export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<CharacterList />} />
-      <Route path="/character/:id" element={<CharacterDetail />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/character/:id" element={<CharacterPage />} />
     </Routes>
   );
 }
-
-export default App;
